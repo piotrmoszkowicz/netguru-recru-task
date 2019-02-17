@@ -1,0 +1,92 @@
+{
+  "name": "netguru-recru-task",
+  "version": "1.0.0",
+  "description": "Task for Netguru recruitment",
+  "scripts": {
+    "start": "npm run serve",
+    "build": "npm run build-ts && npm run tslint",
+    "check": "npm run tslint && npm run test",
+    "serve": "node -r module-alias/register dist/app.js",
+    "watch": "nodemon -r module-alias/register dist/app.js",
+    "test": "env NODE_ENV=test nyc jest",
+    "reformat": "npm run prettier && npm run tslint",
+    "prettier": "prettier --write '**/*.ts'",
+    "build-ts": "tsc",
+    "watch-ts": "tsc -w",
+    "tslint": "tslint -c tslint.json -p tsconfig.json",
+    "dev": "npm run build && npm run watch-dev",
+    "watch-serve": "nodemon -r module-alias/register dist/app.js",
+    "watch-dev": "./node_modules/concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run watch-serve\""
+  },
+  "author": "Piotr Moszkowicz",
+  "license": "ISC",
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/tests/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json"
+    ],
+    "testEnvironment": "node"
+  },
+  "nyc": {
+    "extension": [
+      ".ts"
+    ],
+    "include": [
+      "src/**/*.ts"
+    ],
+    "exclude": [
+      "config/*",
+      "dist/*",
+      "tests/*",
+      "src/types/*"
+    ],
+    "sourceMap": true,
+    "all": true
+  },
+  "_moduleAliases": {
+    "@controllers": "dist/controllers/",
+    "@models": "dist/models/",
+    "@services": "dist/services/",
+    "@utils": "dist/utils/"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/config": "0.0.34",
+    "@types/express": "^4.16.1",
+    "@types/jest": "^24.0.5",
+    "@types/mocha": "^5.2.6",
+    "@types/node": "^11.9.4",
+    "@types/reflect-metadata": "^0.1.0",
+    "jest": "^24.1.0",
+    "nodemon": "^1.18.10",
+    "nyc": "^13.3.0",
+    "prettier": "^1.16.4",
+    "ts-jest": "^23.10.5",
+    "ts-node": "^8.0.2",
+    "tslint": "^5.12.1",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.3.3"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "concurrently": "^4.1.0",
+    "config": "^3.0.1",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "express-validator": "^5.3.1",
+    "module-alias": "^2.2.0",
+    "multer": "^1.4.1",
+    "mysql2": "^1.6.5",
+    "reflect-metadata": "^0.1.13",
+    "routing-controllers": "^0.7.7",
+    "sequelize": "^4.42.0",
+    "sequelize-typescript": "^0.6.7",
+    "winston": "^3.2.1"
+  }
+}

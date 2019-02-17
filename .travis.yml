@@ -1,0 +1,22 @@
+language: node_js
+node_js:
+  - 10.15.1
+services:
+  - docker
+branches:
+  only:
+    - master
+install:
+  - npm install
+script:
+  - npm run build
+  - npm run check
+  - docker build -t piotrmoszkowicz/dropshipping-backend . --no-cache
+before_deploy:
+  - chmod u+x ./scripts/docker_push.sh
+deploy:
+  - provider: script
+    script: bash scripts/docker_push.sh
+    skip_cleanup: true
+    on:
+      branch: master
