@@ -13,8 +13,6 @@ script:
 - npm run build
 - npm run check
 - docker build -t piotrmoszkowicz/netguru . --no-cache
-- chmod u+x ./scripts/docker_push.sh
-- bash scripts/docker_push.sh
 before_deploy:
 - chmod u+x ./scripts/docker_push.sh
 deploy:
