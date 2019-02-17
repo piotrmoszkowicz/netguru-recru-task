@@ -1,31 +1,31 @@
 sudo: true
 language: node_js
 node_js:
-  - 10.15.1
+- 10.15.1
 services:
-  - docker
+- docker
 branches:
   only:
-    - master
+  - master
 install:
-  - npm install
+- npm install
 script:
-  - npm run build
-  - npm run check
-  - docker build -t piotrmoszkowicz/netguru . --no-cache
-  - chmod u+x ./scripts/docker_push.sh
-  - bash scripts/docker_push.sh
+- npm run build
+- npm run check
+- docker build -t piotrmoszkowicz/netguru . --no-cache
+- chmod u+x ./scripts/docker_push.sh
+- bash scripts/docker_push.sh
 before_deploy:
-  - chmod u+x ./scripts/docker_push.sh
+- chmod u+x ./scripts/docker_push.sh
 deploy:
-  - provider: script
-    script: bash scripts/docker_push.sh
-    skip_cleanup: true
-    on:
-      branch: master
+- provider: script
+  script: bash scripts/docker_push.sh
+  skip_cleanup: true
+  on:
+    branch: master
 env:
   global:
-    #DOCKER_USERNAME
-    - secure: nvrsJa76QUz84ynX2kd93pgqqdm1I2ZUAMKnfy02yexP+7IQxo/2IJhlI9x4w+uGqiH0qTAmMVQq0aSoYhAiTu7+uvbgqUTSz20EBW+w+XVCaHBre6TQ0hfoD6eKPRHFt+ZN7raCUZ+exUxuwNIEWumhaPBaMCRKrQ0sj7gyTzAUB+p1unLBHJDXhFTdJ+D1FbtaOoPk3wlb2Mnox26NFO82R2Y9Edo14vA6DN0uA7sg1cvW9fn2ZazVxwT0jak+6UXINpiUUG14m1Td0Iij8AQlmyXFZ3hHYoyDtdujNE4IsdCZRuP46yRv5gPB27kzxOfk3l+ZkGOcPhCnZwVuxHVUOLIAI64tS/SMkWZ00OcIf9IrsH+QF7zNgII5t40/0UQpEKTclszLntZ0aRA1U3DM6nVquHuxDFmNUaZ29+Wz3vqQR7QPZyBQj/ukzp6FWk/zeB7WNtitmjwTWfBL/uS4mF+4/KUd4ykCEYz4536tNjzMr4nJbvdXCcgAdbBD4fo0isc1pDL99rlxyH490HSwExMNlI6Rn4zLHhWaVvddK764ZGmyMUJPVPyMWunt5W9txM5LbkD2A/WwUWjee1ddWoko5H/8ArUNdxAF1OBQQ/rlpRye9TlvYXdnz7CeB+ap7Nqntfy5WeKwZfRO/uO3hC/MCz0xFyDgO3weA+c=
-    #DOCKER_PASSWORD
-    - secure: f/2ofxqsGJBBfGHYXiPUKyRszUeMBuR2L1ilair6aznhcjLF2Cz/6Yf6kxcQVnxrxYmuQlfYanb+Ji61WnE8OqY6djDh+M9pe5vSBRAF/+aoXQffpseukLZMNzdPR1DROCiQTD+TPAgULT1R1xRgtmL7YxV2kjYtZkWmRjoEd+dxs22+MdXE2bjsrmcjW1mdKFMVEkIwlwcvm8f9Ejl9EaNbkQ4DSGRjQ5Kl/DZOo7s+8f511wYGaknn6BKPFP2glrJMnTQ72CElvWEeuwAsOmwc+OMMq5QPyhUD6qAqufr6iABCojF1LsAhPjQTfxOnAsHAME0yiWnQpWcl5P8dTbsq3k5ZDDbht80PbtFKZR6184PsyELa59n6wjj7K5Elm40+2PNT1Ql30Bw7PSWSvqyp6L5CX7sK5dDxI3ramlUYNRqSbZqn1tiQ8CTdXQYIQ88nt0hl9CvOJMrXZbjg5Wcsp+UWb/2H3ourFLYs6lBn0IPrKmvhRLCt20zt+L3xN6pc+s+pdZrg7C9j272o8BR+hKc93IjOM8leav6MqV/aHTIfvaQoCqH986BtG+2njC/QSKPeJzYMAIuRyrmCAnE9wGfBupg6WkJnSxAmeNmhoLmLpdvJ0fxnF8BR/h7LCZvu4WhVANoG5rSJBYcciQP9jW3ySWdfG4jMXyFfNq8=
+  #DOCKER_USERNAME
+  - secure: e4tHUsf4VUuPGUgm9bs5pSjfVhLFwvLZq0oGBY3vY8isEj1xcuspohFhT4XUorZOdH465JQrBtJ61dtdN9jICwU69kSU5rz05WiJr25QqRT0lpxSKZLte1ONJqBEBZxvwGk6MD4bMv3c5PQHVD4Oxbi559mMjvGLuCkSyPPzi9AmIczmXSQj+8diYXzRcx9vnustQLjGopphEW3EOqN6/QmS4z6kpzVnNx58NAwR9EGUPQO0y7JtX+vH6OO/bbsp8aK5m+0vogK8l6qfdt3se5m+sUaMS1SNihviKRTU0eujqNNCLnKU1ccEb3EF/CrfsVLuvhFAlBpsRemSJc2KrF91CIyOfJkOzVhpIVGNVT2ruQsIUCL+2RJRjzwZ8DlPNrzGJQUAogh6/FOOXrwcMHGGzUoUF8R1f7S8cNnhr8ERME35GNHwFnBIABBAbXmnzY4h3cjxNXpMbSiwvC7F2ck1zZvKoQtQzhnP30UoObRdWLYB5yr/cC6iedgamCUJ7HKoAqKFCtnENJTSa8M1TcdufkjWwEqysorIdFtZr6uVx9gNGM1eYFDYEM+OaQje2vvaFvv6pYVW4Mu1EuPn7uRWZAfOOeS9uD1Nh1eHEe8J26knkCp0Fav/EJDFTcAhgjtDPqWhG8jToMu8MMTkIZezEFy5/LHjxkEiEfGxA7M=
+  #DOCKER_PASSWORD
+  - secure: TfdZQpU9uWq8lFQCr153waY+la4esmu8Cea+byDhbFJr5PHR9N9MO3Z8et70Nr8GXKn/YBZ3xES8UUO18qS3kO3jYc2A7ojPjR/tHMO4cf6Ji4XSJLF4a08TdvPwMhxr3RGfRSQ1AcMfq+vxQtUZgavt7gdlnODcnpCka6iB2G5wR83GpSMTs3EOB16oChWeREPbKAY0XjQM8vblr5k3MuZgslZN15joBipZG9SoUg2pG8/VzWELsoAlVdHMu571VAbuP8v6Zaxo32xnIBrL94OyaNDR9qOm7nro2fG32j5oyfKhtBnsMXbPhcsdaX9tTwD4E/A2g+TlaynqRNTj8RhxnVN2g4eeYTJvsteRKXAbhVr4Ja8awMmnxQwJZIwOqrWeK9zF6MIWaEbMbwMS7gdL+Akr8auuIlClA9he8XFTKAQ4EuZo1pUkWt3d1Zvd8oXhaiZ2560mVTKyr8SCQKgppvwViyPBxIH2qCy01l8PermEScKQxYGfQsI12u2wjw5SBr2AD1MCLGE6xoI5aSPcSJaoh6mptyzr+F4i/pMxmlSSqNav3OUENdxGXBjFHSJHImlN5YcHFJFJcJXUtpSvgGXUPpCvK378VwIjWm8i40hUm8otlEsNL32ppJ7BULHJF5T+xAPhL26FsCR5UY2B6me5WrDFBNcejAfycnQ=
