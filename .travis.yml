@@ -11,7 +11,7 @@ install:
 script:
   - npm run build
   - npm run check
-  - docker build -t piotrmoszkowicz/dropshipping-backend . --no-cache
+  - docker build -t piotrmoszkowicz/netguru . --no-cache
 before_deploy:
   - chmod u+x ./scripts/docker_push.sh
 deploy:
@@ -20,3 +20,9 @@ deploy:
     skip_cleanup: true
     on:
       branch: master
+env:
+  global:
+    #DOCKER_USERNAME
+    - secure: "QoBi/1wjfZVpATkCaOKOGlOOfv+hONyTIr0RVfKioth6uZ1gmR26bnw+NBOBQCGk6mLq/8dCvpY+S6vt28Ptw/RBVkCbSgZsAl/mVW97pOW4Uw2uHVCHOQZe47Hti1/rgT/EMp5rcyQMBlAMHXW33XJwbSZPDcBofe+iFIXsmTAlDIQE6gHnQkCx1azSSaEtybW1dSNFXr4DMsPDR913A12ix56fo1o56E2xyPWHtbMkflsrlPjl1QB52JViCN1tpt+Lku7RTww3r7jPakNegI1KTbjPVJ+b2t7pEg3MQmnjmrqXRlkZHSlRxOxmwproLRHZxcze4kfuRyMgvGrHqKZ+C7yyAByHrj2DzVcZUC4zXXuF2PE+abs290jyNNO5kkjhwq+lScT1/DKpAqvDcxafwzM7vc8R3nQIWF7aev+mEQ0eF7mojuJ6OEczKb3d4KNhAyhF+81Oga2S50iDei8opX5QnsEofFk59cKN+GRvVMQ/3tuG/6tE16rB6xY88ItnEEAKL0kcwgQddux4C0jzui68pmKsQPufx89HHxDKgF3COPbu0uyWjl6IPsni+hF9fx1gBTXjejVemcXdMt8uxWSll9fd6iNdHOdxq9dGXFoT6pMgaN1VphLTURmM62TTZXb0sw9o4mKM8ChNQlN+jm5y+a8n4719Nn6tkKc="
+    #DOCKER_PASSWORD
+    - secure: "C1Cax6PBufN+C7x3AEsO20JUkAHvQF6BY/qnQBluQb5Ji4XfbWWOyvHGV64Ss9qbmS1XryGs+PyasXZGDmrM0kfMDOC/rM0wVbk5BUpAoSwFwLAKSsSNRA0sCeBL89PXYNKhvTZKsN7amzpqlMTwNl2lBJpqSi+dq9CGJrKMpZRQpReblI2m+DJ8kv3FdBGWIFXr7IpgJE63mHxbUaLTFYAAx4iPwr+qUGVFgbZmpFdzIYRQR2VO0QYY4pADfHBIGl/ITRghwFNcROetx5IM35Mya7h+CIuaCeec8sT6QMVDB97i3cFpa3A3S1Hgtuamj15X7tXj9f1q7Gi0rjnK4fEndgz7vun6yvpcDVwW4v6zHhjJWFDmPpzkGb7kjWcGdu9GxGkx52YZiYqNjpKcvzSqWRMENiYtvtfpSiQfU0KHSSXUMFW08e2FcTgtuH5ql7oqbo5c/qqml392f73l9M6nSqjM6iwQaz9tjp4FpYTESISRev2S6REi76YxQVCKVAKeaTOHebxYOK1FaXwGkYmXJ2MMq14T4BHs/zfX5bjbRC6NVFA5zS4ZQjl0M8Hl1ftrEL7AW4RSEYlmjX5EZqD9vanwIhnT0KTq3QtA+/AKWfgOR7Y1Sypcutl4JyOUaKDCr9gETE86+m93QMH5SRy3y4FmvOnB7DSlmWlL3SQ="
