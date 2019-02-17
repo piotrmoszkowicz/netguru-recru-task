@@ -11,7 +11,7 @@ install:
 script:
   - npm run build
   - npm run check
-  - docker build -t piotrmoszkowicz/dropshipping-backend . --no-cache
+  - docker build -t piotrmoszkowicz/netguru . --no-cache
 before_deploy:
   - chmod u+x ./scripts/docker_push.sh
 deploy:
