@@ -44,10 +44,11 @@ Variable                | Description
 `DATABASE_PASSWORD`     |  database password
 `DATABASE_PORT`         |  database port
 `DATABASE_USER`         |  database user
+`PORT`                  | app port (default: `3000`), you shouldn't change it!
 
 ## Run in production
 
-In order to run in production, I suggest using docker. More info how to run it here: [[TODO]]. If you want to run it without docker I suggest taking a look at "Environmental variables list", setting then up to your needs (database credentials) and simply build it and start it:
+In order to run in production, I suggest using docker. More info how to run it - look below. If you want to run it without docker I suggest taking a look at "Environmental variables list", setting then up to your needs and simply build it and start it:
 
 ```sh 
 $ npm run build
@@ -56,23 +57,7 @@ $ npm start
 
 ## Run in production via Docker
 
-You simply need to build the image and set up envs.
-
-### Docker envs:
-
-Variable                | Description
------                   | -----------
-`DATABASE_ENGINE`       | database engine (default: `mysql`)
-`DATABASE_HOST`         | database host (default: `127.0.0.1`)
-`DATABASE_MAX_CONN`     | database max connections (default: `25`)
-`DATABASE_MAX_IDLE_MS`  | database max idle time in ms (default: `30000`)
-`DATABASE_MIN_CONN`     | database min connections (default: `0`)
-`DATABASE_NAME`         | database name
-`DATABASE_PASSWORD`     | database password
-`DATABASE_PORT`         | database port
-`DATABASE_USER`         | database user
-`PORT`                  | app port (default: `3000`), you shouldn't change it!
-
+You simply need to pull the image (it's available publicly on [dockerhub](https://cloud.docker.com/u/piotrmoszkowicz/repository/docker/piotrmoszkowicz/netguru)) and set up envs.
 After setting up ENVs, proceed with commands:
 
 ```sh 
