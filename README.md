@@ -44,7 +44,7 @@ Variable                | Description
 `DATABASE_PASSWORD`     |  database password
 `DATABASE_PORT`         |  database port
 `DATABASE_USER`         |  database user
-`PORT`                  | app port (default: `3000`), you shouldn't change it!
+`PORT`                  |  app port (default: `3000`), you shouldn't change it!
 
 ## Run in production
 
