@@ -3,12 +3,12 @@ import { pick } from "lodash";
 import { mapKeys } from "lodash/fp";
 import moment from "moment";
 import rp from "request-promise";
+import { InternalServerError, NotAcceptableError } from "routing-controllers";
 
 import Movie from "@models/Movie";
 import Logger from "@utils/logger";
 
 import MovieApiResponse from "MovieApiResponse";
-import { InternalServerError, NotAcceptableError } from "routing-controllers";
 
 export default class MovieService {
   /**
@@ -118,6 +118,7 @@ export default class MovieService {
 
   /**
    * Returns all movies from database
+   * @return  {Promise<Movie[]>}          Promise, which resolves with comments
    */
   public getAll(): Promise<Movie[]> {
     return this.movieModel.findAll();
@@ -140,7 +141,7 @@ export default class MovieService {
    * Adds movie to database via API search
    * @param {string}     id?              API movie ID
    * @param {string}     title?           Movie title to search for
-   * @return {Promise<Movie>}             Instance of new movie
+   * @return {Promise<Movie>}             Resolves with new movie if created
    */
   public async addMovie(id?: string, title?: string): Promise<any> {
     if (id === undefined && title === undefined) {
@@ -165,7 +166,7 @@ export default class MovieService {
    * Updates movie with certain ID
    * @param  {number}     id              ID of movie to update
    * @param  {object}     updates         Requested updates
-   * @return {Promise<Movie>}             Promise, which resolves with updated object
+   * @return {Promise<Movie>}             Promise, which resolves with updated movie
    */
   public async updateMovie(id: number, updates: object): Promise<Movie> {
     const allowedUpdates = this._pickAllowedUpdates(updates);
