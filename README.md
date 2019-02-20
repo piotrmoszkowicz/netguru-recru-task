@@ -45,10 +45,11 @@ Variable                | Description
 `DATABASE_PORT`         |  database port
 `DATABASE_USER`         |  database user
 `PORT`                  |  app port (default: `3000`), you shouldn't change it!
+`API_KEY`               |  key to [OMDBAPI](http://www.omdbapi.com)
 
 ## Run in production
 
-In order to run in production, I suggest using docker. More info how to run it - look below. If you want to run it without docker I suggest taking a look at "Environmental variables list", setting then up to your needs and simply build it and start it:
+In order to run in production, I suggest using docker. More info how to run it - look below. If you want to run it without docker I suggest taking a look at "Environmental variables list", setting then up to your needs, creating the database and simply build it and start it:
 
 ```sh 
 $ npm run build
@@ -58,7 +59,7 @@ $ npm start
 ## Run in production via Docker
 
 You simply need to pull the image (it's available publicly on [dockerhub](https://cloud.docker.com/u/piotrmoszkowicz/repository/docker/piotrmoszkowicz/netguru)) and set up envs.
-After setting up ENVs, proceed with commands:
+After setting up ENVs, create the database and proceed with commands:
 
 ```sh 
 $ docker run -d -p 3306:3306 --name mysql mysql:5.7
