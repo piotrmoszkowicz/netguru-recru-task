@@ -49,7 +49,7 @@ Variable                | Description
 
 ## Run in production
 
-In order to run in production, I suggest using docker. More info how to run it - look below. If you want to run it without docker I suggest taking a look at "Environmental variables list", setting then up to your needs, creating the database and simply build it and start it:
+In order to run in production, I suggest using docker. More info how to run it - look below. If you want to run it without docker I suggest taking a look at "Environmental variables list", setting them up to your needs, creating the database and simply build it and start it:
 
 ```sh 
 $ npm run build
