@@ -3,19 +3,33 @@ import {
   Column,
   CreatedAt,
   DataType,
+  DefaultScope,
   DeletedAt,
+  HasMany,
+  IsDate,
+  Length,
   Model,
   PrimaryKey,
+  Scopes,
   Table,
   Unique,
   UpdatedAt
 } from "sequelize-typescript";
 
+import Comment from "@models/Comment";
+
 import Rating from "Rating";
 
-// TODO: Add scopes to get movie with comments
-// TODO: Add association with comments
-
+@DefaultScope({
+  include: [
+    {
+      model: () => Comment
+    }
+  ]
+})
+@Scopes({
+  withoutComments: {}
+})
 @Table({
   tableName: "movies"
 })
@@ -25,46 +39,83 @@ export default class Movie extends Model<Movie> {
   @Column
   public id: number;
 
-  @Column
+  @Length({ min: 3, max: 64 })
+  @Column({
+    type: DataType.STRING(64)
+  })
   public title: string;
 
-  @Column
+  @Length({ min: 3, max: 9 })
+  @Column({
+    type: DataType.STRING(9)
+  })
   public year: string;
 
-  @Column
+  @Length({ min: 3, max: 32 })
+  @Column({
+    type: DataType.STRING(32)
+  })
   public rated: string;
 
+  @IsDate
   @Column
   public released: Date;
 
   @Column
   public runtime: number;
 
-  @Column
+  @Length({ min: 3, max: 128 })
+  @Column({
+    type: DataType.STRING(128)
+  })
   public genre: string;
 
-  @Column
+  @Length({ min: 3, max: 64 })
+  @Column({
+    type: DataType.STRING(64)
+  })
   public writer: string;
 
-  @Column
+  @Length({ min: 3, max: 64 })
+  @Column({
+    type: DataType.STRING(64)
+  })
   public director: string;
 
-  @Column
+  @Length({ min: 3, max: 128 })
+  @Column({
+    type: DataType.STRING(128)
+  })
   public actors: string;
 
-  @Column
+  @Length({ min: 3, max: 512 })
+  @Column({
+    type: DataType.STRING(512)
+  })
   public plot: string;
 
-  @Column
+  @Length({ min: 3, max: 15 })
+  @Column({
+    type: DataType.STRING(15)
+  })
   public language: string;
 
-  @Column
+  @Length({ min: 3, max: 15 })
+  @Column({
+    type: DataType.STRING(15)
+  })
   public country: string;
 
-  @Column
+  @Length({ min: 3, max: 128 })
+  @Column({
+    type: DataType.STRING(128)
+  })
   public awards: string;
 
-  @Column
+  @Length({ min: 3, max: 256 })
+  @Column({
+    type: DataType.STRING(256)
+  })
   public posterUrl: string;
 
   @Column({
@@ -84,19 +135,32 @@ export default class Movie extends Model<Movie> {
   public imdbVotes: number;
 
   @Unique
-  @Column
+  @Length({ min: 1, max: 10 })
+  @Column({
+    type: DataType.STRING(10)
+  })
   public imdbID: string;
 
+  @IsDate
   @Column
   public dvdPremiere?: Date;
 
-  @Column
+  @Length({ min: 3, max: 32 })
+  @Column({
+    type: DataType.STRING(32)
+  })
   public boxOffice: string;
 
-  @Column
+  @Length({ min: 3, max: 32 })
+  @Column({
+    type: DataType.STRING(32)
+  })
   public production: string;
 
-  @Column
+  @Length({ min: 3, max: 256 })
+  @Column({
+    type: DataType.STRING(256)
+  })
   public website: string;
 
   @CreatedAt
@@ -107,4 +171,7 @@ export default class Movie extends Model<Movie> {
 
   @DeletedAt
   public deletedOn: Date;
+
+  @HasMany(() => Comment, "movieId")
+  public comments?: Comment[];
 }
