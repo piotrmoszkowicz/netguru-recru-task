@@ -13,7 +13,7 @@ import {
 import MovieService from "@services/movie";
 
 @JsonController()
-export class CommentsController {
+export class MoviesController {
   constructor(private movieService = new MovieService()) {}
 
   @Get("/movies")
