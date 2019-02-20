@@ -23,7 +23,7 @@ interface MovieApiResponse {
   imdbRating: string;
   imdbVotes: string;
   imdbID: string;
-  Type: string;
+  Type?: string;
   DVD: string;
   BoxOffice: string;
   Production: string;
