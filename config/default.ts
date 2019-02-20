@@ -11,6 +11,7 @@ export default {
     user: process.env.DATABASE_USER
   },
   app: {
-    port: process.env.PORT || 3000
+    port: process.env.PORT || 3000,
+    apiKey: process.env.API_KEY
   }
 };
