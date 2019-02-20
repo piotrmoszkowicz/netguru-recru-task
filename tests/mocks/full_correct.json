@@ -1,0 +1,38 @@
+{
+  "title": "Harry Potter and the Deathly Hallows: Part 2",
+  "year": "2011",
+  "rated": "PG-13",
+  "genre": "Adventure, Drama, Fantasy, Mystery",
+  "director": "David Yates",
+  "writer": "Steve Kloves (screenplay), J.K. Rowling (novel)",
+  "actors": "Ralph Fiennes, Michael Gambon, Alan Rickman, Daniel Radcliffe",
+  "plot": "Harry, Ron, and Hermione search for Voldemort's remaining Horcruxes in their effort to destroy the Dark Lord as the final battle rages on at Hogwarts.",
+  "language": "English",
+  "country": "USA, UK",
+  "awards": "Nominated for 3 Oscars. Another 45 wins & 91 nominations.",
+  "imdbID": "tt1201607",
+  "boxOffice": "$381,000,185",
+  "production": "Warner Bros. Pictures",
+  "website": "http://www.HarryPotter.com/",
+  "released": "2011-07-15",
+  "runtime": 130,
+  "metascore": 87,
+  "posterUrl": "https://m.media-amazon.com/images/M/MV5BMjIyZGU4YzUtNDkzYi00ZDRhLTljYzctYTMxMDQ4M2E0Y2YxXkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_SX300.jpg",
+  "imdbRating": 8.1,
+  "imdbVotes": 678219,
+  "dvdPremiere": "2011-11-11",
+  "ratings": [
+    {
+      "source": "Internet Movie Database",
+      "value": "8.1/10"
+    },
+    {
+      "source": "Rotten Tomatoes",
+      "value": "96%"
+    },
+    {
+      "source": "Metacritic",
+      "value": "87/100"
+    }
+  ]
+}
