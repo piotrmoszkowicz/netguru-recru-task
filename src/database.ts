@@ -1,8 +1,9 @@
+import config from "config";
+import { Sequelize } from "sequelize-typescript";
+
 import Logger from "@utils/logger";
 
-import config from "config";
 import { DatabaseConfig } from "ConfigType";
-import { Sequelize } from "sequelize-typescript";
 
 const dbConfig: DatabaseConfig = config.get("database");
 
