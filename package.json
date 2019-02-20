@@ -10,13 +10,13 @@
     "watch": "nodemon -r module-alias/register dist/app.js",
     "test": "env NODE_ENV=test nyc jest",
     "reformat": "npm run prettier && npm run tslint",
-    "prettier": "prettier --write '**/*.ts'",
-    "build-ts": "tsc",
-    "watch-ts": "tsc -w",
+    "prettier": "./node_modules/.bin/prettier --write '**/*.ts'",
+    "build-ts": "./node_modules/.bin/tsc",
+    "watch-ts": "./node_modules/.bin/tsc -w",
     "tslint": "tslint -c tslint.json -p tsconfig.json",
     "dev": "npm run build && npm run watch-dev",
     "watch-serve": "nodemon -r module-alias/register dist/app.js",
-    "watch-dev": "./node_modules/concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run watch-serve\""
+    "watch-dev": "./node_modules/.bin/concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run watch-serve\""
   },
   "author": "Piotr Moszkowicz",
   "license": "ISC",
@@ -31,7 +31,13 @@
       "js",
       "json"
     ],
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "moduleNameMapper": {
+      "@controllers/(.*)$": "<rootDir>/src/controllers/$1",
+      "@models/(.*)$": "<rootDir>/src/models/$1",
+      "@services/(.*)$": "<rootDir>/src/services/$1",
+      "@utils/(.*)$": "<rootDir>/src/utils/$1"
+    }
   },
   "nyc": {
     "extension": [
@@ -61,6 +67,7 @@
     "@types/express": "^4.16.1",
     "@types/jest": "^24.0.5",
     "@types/mocha": "^5.2.6",
+    "@types/moment": "^2.13.0",
     "@types/node": "^11.9.4",
     "@types/reflect-metadata": "^0.1.0",
     "jest": "^24.1.0",
@@ -74,16 +81,21 @@
     "typescript": "^3.3.3"
   },
   "dependencies": {
+    "@types/lodash": "^4.14.121",
     "body-parser": "^1.18.3",
     "concurrently": "^4.1.0",
     "config": "^3.0.1",
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "express-validator": "^5.3.1",
+    "lodash": "^4.17.11",
     "module-alias": "^2.2.0",
+    "moment": "^2.24.0",
     "multer": "^1.4.1",
     "mysql2": "^1.6.5",
     "reflect-metadata": "^0.1.13",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4",
     "routing-controllers": "^0.7.7",
     "sequelize": "^4.42.0",
     "sequelize-typescript": "^0.6.7",
